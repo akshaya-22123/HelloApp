@@ -1,25 +1,16 @@
 public class HelloApp {
 
     public static void main(String[] args) {
-        // If no names are provided, display "Hello, World!"
-        if (args.length == 0) {
-            System.out.println("Hello, World!");
-        } else {
-            StringBuilder nameBuilder = new StringBuilder();
+        // Default name if no arguments are provided
+        String names = "World";
 
-            // 1. Enhanced For Loop to iterate through arguments
-            for (String name : args) {
-                nameBuilder.append(name).append(", ");
-            }
-
-            String finalNames = "";
-            // 2. Remove trailing delimiter using substring if names exist
-            if (nameBuilder.length() > 0) {
-                // Removes the last ", " (2 characters)
-                finalNames = nameBuilder.substring(0, nameBuilder.length() - 2);
-            }
-
-            System.out.println("Hello, " + finalNames + "!");
+        // Check if command-line arguments exist
+        if (args.length > 0) {
+            // Join all arguments with a comma and space
+            names = String.join(", ", args);
         }
+
+        // Print the final greeting to the console
+        System.out.println("Hello, " + names + "!");
     }
 }
