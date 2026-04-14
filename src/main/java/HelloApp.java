@@ -1,26 +1,24 @@
 public class HelloApp {
+
     public static void main(String[] args) {
-        String names;
-
-        // 1. Default Values: Providing a fallback value when no input is given
+        // Check if any arguments were provided
         if (args.length == 0) {
-            names = "World";
+            System.out.println("Hello, World!");
         } else {
-            // 6. StringBuilder: Efficiently building a string from multiple parts
             StringBuilder nameBuilder = new StringBuilder();
+            boolean first = true;
 
-            // 7. Looping Constructs: Using for loops to iterate through command-line arguments
-            for (int i = 0; i < args.length; i++) {
-                nameBuilder.append(args[i]);
-
-                // 8. String Concatenation: Joining multiple strings with a delimiter (comma and space)
-                if (i < args.length - 1) {
+            // Iterate through each name provided in args
+            for (String name : args) {
+                if (!first) {
                     nameBuilder.append(", ");
                 }
+                nameBuilder.append(name);
+                first = false;
             }
-            names = nameBuilder.toString();
-        }
 
-        System.out.println("Hello, " + names + "!");
+            // Print the final formatted string
+            System.out.println("Hello, " + nameBuilder.toString() + "!");
+        }
     }
 }
